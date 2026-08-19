@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🌸 Happy Birthday, My Love 🌸</title>
+  <!-- Google Fonts for a romantic touch -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Quicksand:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(145deg, #ffdde1 0%, #fad0d4 100%);
+      font-family: 'Quicksand', sans-serif;
+      padding: 1.5rem;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* floating heart background (css only) */
+    .hearts-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .heart-float {
+      position: absolute;
+      font-size: 1.8rem;
+      opacity: 0.25;
+      animation: floatUp 12s infinite alternate ease-in-out;
+      color: #f28b8b;
+    }
+
+    .heart-float:nth-child(1) { left: 5%; animation-delay: 0s; font-size: 2.4rem; }
+    .heart-float:nth-child(2) { left: 15%; animation-delay: 2s; font-size: 1.8rem; opacity: 0.2; }
+    .heart-float:nth-child(3) { left: 25%; animation-delay: 4s; font-size: 3rem; }
+    .heart-float:nth-child(4) { left: 35%; animation-delay: 1s; font-size: 2rem; }
+    .heart-float:nth-child(5) { left: 45%; animation-delay: 3s; font-size: 2.6rem; opacity: 0.3; }
+    .heart-float:nth-child(6) { left: 55%; animation-delay: 5s; font-size: 2.2rem; }
+    .heart-float:nth-child(7) { left: 65%; animation-delay: 0.5s; font-size: 3.2rem; opacity: 0.2; }
+    .heart-float:nth-child(8) { left: 75%; animation-delay: 2.5s; font-size: 1.9rem; }
+    .heart-float:nth-child(9) { left: 85%; animation-delay: 4.5s; font-size: 2.8rem; opacity: 0.25; }
+    .heart-float:nth-child(10) { left: 92%; animation-delay: 1.8s; font-size: 2rem; }
+
+    @keyframes floatUp {
+      0% { transform: translateY(20px) rotate(0deg) scale(0.9); opacity: 0.2; }
+      50% { transform: translateY(-80px) rotate(15deg) scale(1.2); opacity: 0.5; }
+      100% { transform: translateY(-160px) rotate(-5deg) scale(1); opacity: 0.15; }
+    }
+
+    /* main card – glassmorphism + soft glow */
+    .birthday-card {
+      position: relative;
+      z-index: 10;
+      max-width: 780px;
+      width: 100%;
+      background: rgba(255, 245, 245, 0.6);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: 60px 60px 60px 60px;
+      box-shadow: 0 30px 60px rgba(190, 90, 110, 0.25), 
+                  0 10px 30px rgba(255, 180, 190, 0.3),
+                  inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+      padding: 2.8rem 2.5rem;
+      text-align: center;
+      transition: 0.3s;
+      border: 1px solid rgba(255, 220, 220, 0.5);
+    }
+
+    .card-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* profile / decorative avatar */
+    .avatar {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #ff9a9e 0%, #fad0d4 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 5rem;
+      box-shadow: 0 15px 35px rgba(233, 120, 140, 0.4);
+      margin-bottom: 0.8rem;
+      border: 4px solid rgba(255, 240, 240, 0.8);
+      transform: rotate(-3deg);
+      transition: 0.3s;
+    }
+
+    .avatar:hover {
+      transform: scale(1.02) rotate(0deg);
+      box-shadow: 0 20px 45px rgba(233, 100, 130, 0.5);
+    }
+
+    /* name & title */
+    .name {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3.6rem;
+      font-weight: 400;
+      color: #a1516b;
+      text-shadow: 0 3px 10px rgba(235, 140, 160, 0.3);
+      letter-spacing: 2px;
+      margin-top: -0.2rem;
+      line-height: 1.2;
+    }
+
+    .sub-greeting {
+      font-size: 1.3rem;
+      font-weight: 300;
+      color: #b15d79;
+      background: rgba(255, 220, 225, 0.4);
+      padding: 0.3rem 1.8rem;
+      border-radius: 60px;
+      backdrop-filter: blur(4px);
+      display: inline-block;
+      margin: 0.5rem 0 1rem 0;
+      letter-spacing: 1px;
+      border: 1px solid rgba(255, 200, 200, 0.5);
+    }
+
+    .message-box {
+      background: rgba(255, 240, 240, 0.3);
+      backdrop-filter: blur(4px);
+      padding: 1.8rem 1.8rem;
+      border-radius: 50px;
+      margin: 1.2rem 0 1.5rem 0;
+      box-shadow: inset 0 2px 8px rgba(255, 200, 200, 0.2);
+      border: 1px solid rgba(255, 230, 230, 0.6);
+      width: 100%;
+    }
+
+    .message-box p {
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: #4d2e38;
+      line-height: 1.7;
+      margin-bottom: 0.8rem;
+    }
+
+    .message-box .heart-emoji {
+      color: #e05a6f;
+      font-size: 1.6rem;
+      display: inline-block;
+      animation: pulseHeart 1.8s infinite;
+    }
+
+    @keyframes pulseHeart {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.3); }
+      100% { transform: scale(1); }
+    }
+
+    .signature {
+      font-family: 'Great Vibes', cursive;
+      font-size: 1.8rem;
+      color: #a1516b;
+      margin-top: 0.2rem;
+      opacity: 0.9;
+    }
+
+    /* countdown / age badge */
+    .age-badge {
+      background: #fcccd9;
+      padding: 0.6rem 2rem;
+      border-radius: 80px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-weight: 600;
+      color: #562b39;
+      font-size: 1.2rem;
+      box-shadow: 0 5px 15px rgba(220, 130, 150, 0.2);
+      margin: 0.8rem 0 1.2rem 0;
+      border: 1px solid rgba(255, 255, 255, 0.6);
+    }
+
+    .age-badge span {
+      background: #fff0f2;
+      padding: 0.2rem 0.9rem;
+      border-radius: 40px;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #b3415a;
+    }
+
+    /* photo gallery / polaroid style - now clickable for video */
+    .polaroid-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem 1.5rem;
+      margin: 1.8rem 0 1.2rem 0;
+    }
+
+    .polaroid {
+      background: #fff9f9;
+      padding: 0.6rem 0.6rem 1.6rem 0.6rem;
+      box-shadow: 0 12px 25px rgba(160, 90, 100, 0.2);
+      border-radius: 18px 18px 30px 30px;
+      transform: rotate(-1deg);
+      transition: 0.25s;
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      flex: 0 1 120px;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .polaroid:nth-child(2) {
+      transform: rotate(3deg);
+    }
+    .polaroid:nth-child(3) {
+      transform: rotate(-2.5deg);
+    }
+
+    .polaroid:hover {
+      transform: scale(1.02) rotate(0deg);
+      box-shadow: 0 18px 35px rgba(180, 80, 100, 0.3);
+    }
+
+    .polaroid .photo {
+      width: 100%;
+      aspect-ratio: 1/1;
+      background: #fcdde3;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      background: linear-gradient(145deg, #fbcad2, #fadadd);
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.3);
+    }
+
+    .polaroid .caption {
+      font-size: 0.8rem;
+      font-weight: 400;
+      color: #7a4b56;
+      margin-top: 0.5rem;
+      letter-spacing: 0.5px;
+      text-align: center;
+    }
+
+    .polaroid .play-icon {
+      position: absolute;
+      bottom: 50%;
+      right: 50%;
+      transform: translate(50%, 50%);
+      font-size: 2.2rem;
+      opacity: 0.7;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+      pointer-events: none;
+    }
+
+    /* CTA button */
+    .btn-love {
+      background: #ffb3c1;
+      border: none;
+      padding: 0.9rem 2.8rem;
+      border-radius: 60px;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #451f2b;
+      box-shadow: 0 12px 30px rgba(200, 110, 130, 0.3);
+      cursor: pointer;
+      transition: 0.25s;
+      margin: 0.8rem 0 0.3rem 0;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Quicksand', sans-serif;
+      letter-spacing: 0.6px;
+      backdrop-filter: blur(2px);
+    }
+
+    .btn-love:hover {
+      background: #ffa0b2;
+      transform: scale(1.02);
+      box-shadow: 0 18px 35px rgba(200, 90, 120, 0.4);
+      color: #2d141c;
+    }
+
+    .btn-love:active {
+      transform: scale(0.96);
+    }
+
+    /* small footer */
+    .footer-note {
+      margin-top: 1.5rem;
+      font-size: 0.9rem;
+      opacity: 0.7;
+      color: #66424b;
+      letter-spacing: 0.5px;
+      font-weight: 300;
+    }
+
+    /* video modal overlay */
+    .video-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(6px);
+      z-index: 1000;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+    }
+
+    .video-overlay.active {
+      display: flex;
+    }
+
+    .video-container {
+      max-width: 700px;
+      width: 100%;
+      background: rgba(255, 240, 240, 0.1);
+      border-radius: 40px;
+      padding: 1.2rem;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+      position: relative;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .video-container video {
+      width: 100%;
+      border-radius: 30px;
+      display: block;
+      background: #1a0f12;
+    }
+
+    .close-video {
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      background: #ff7b8a;
+      border: none;
+      color: white;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      font-size: 1.6rem;
+      cursor: pointer;
+      box-shadow: 0 6px 18px rgba(200, 50, 70, 0.5);
+      transition: 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid white;
+    }
+
+    .close-video:hover {
+      transform: scale(1.1);
+      background: #e85a6f;
+    }
+
+    /* big kiss & balloon burst */
+    .kiss-burst-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 999;
+      overflow: hidden;
+    }
+
+    .big-kiss {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      font-size: 10rem;
+      animation: kissPop 1.2s ease-out forwards;
+      text-shadow: 0 0 60px rgba(255, 80, 120, 0.7);
+    }
+
+    @keyframes kissPop {
+      0% { transform: translate(-50%, -50%) scale(0) rotate(-20deg); opacity: 0; }
+      40% { transform: translate(-50%, -50%) scale(1.6) rotate(5deg); opacity: 1; }
+      70% { transform: translate(-50%, -50%) scale(1.2) rotate(-3deg); opacity: 1; }
+      100% { transform: translate(-50%, -50%) scale(1.4) rotate(0deg); opacity: 1; }
+    }
+
+    .balloon {
+      position: absolute;
+      font-size: 3.5rem;
+      animation: balloonBurst 1.5s ease-out forwards;
+      opacity: 0;
+    }
+
+    @keyframes balloonBurst {
+      0% { transform: scale(0.3) translate(0,0); opacity: 0; }
+      20% { transform: scale(1.2) translate(10px, -30px); opacity: 1; }
+      60% { transform: scale(1.8) translate(-20px, -120px); opacity: 0.9; }
+      100% { transform: scale(2.5) translate(30px, -220px); opacity: 0; }
+    }
+
+    /* responsive */
+    @media (max-width: 550px) {
+      .birthday-card {
+        padding: 2rem 1.5rem;
+        border-radius: 40px;
+      }
+      .name {
+        font-size: 2.8rem;
+      }
+      .avatar {
+        width: 100px;
+        height: 100px;
+        font-size: 4rem;
+      }
+      .message-box p {
+        font-size: 1rem;
+      }
+      .polaroid-row {
+        gap: 0.8rem;
+      }
+      .polaroid {
+        flex: 0 1 90px;
+        padding-bottom: 1rem;
+      }
+      .polaroid .photo {
+        font-size: 2.2rem;
+      }
+      .btn-love {
+        font-size: 1.1rem;
+        padding: 0.7rem 2rem;
+      }
+      .age-badge {
+        font-size: 1rem;
+        padding: 0.4rem 1.2rem;
+      }
+      .big-kiss {
+        font-size: 6rem;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .polaroid {
+        flex: 0 1 70px;
+      }
+      .polaroid .photo {
+        font-size: 1.6rem;
+      }
+      .polaroid .caption {
+        font-size: 0.6rem;
+      }
+    }
+
+    /* sparkle (for button) */
+    .sparkle {
+      position: fixed;
+      pointer-events: none;
+      font-size: 1.2rem;
+      animation: sparkleFade 0.7s ease-out forwards;
+      z-index: 999;
+    }
+    @keyframes sparkleFade {
+      0% { opacity: 1; transform: translate(0,0) scale(1); }
+      100% { opacity: 0; transform: translate(30px, -60px) scale(1.6); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- floating hearts background -->
+  <div class="hearts-bg">
+    <div class="heart-float">❤️</div>
+    <div class="heart-float">🌸</div>
+    <div class="heart-float">💖</div>
+    <div class="heart-float">✨</div>
+    <div class="heart-float">🌸</div>
+    <div class="heart-float">💗</div>
+    <div class="heart-float">❤️</div>
+    <div class="heart-float">💕</div>
+    <div class="heart-float">🌸</div>
+    <div class="heart-float">💖</div>
+  </div>
+
+  <!-- video modal -->
+  <div class="video-overlay" id="videoOverlay">
+    <div class="video-container">
+      <button class="close-video" id="closeVideoBtn">✕</button>
+      <video id="videoPlayer" controls autoplay>
+        <source src="" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </div>
+
+  <!-- main birthday card -->
+  <div class="birthday-card">
+    <div class="card-inner">
+
+      <!-- Avatar with crown emoji -->
+      <div class="avatar">👸🏽</div>
+
+      <!-- Name -->
+      <h1 class="name">Happy Birthday, My Queen</h1>
+      <div class="sub-greeting">✨ to the most beautiful soul ✨</div>
+
+      <!-- Age badge -->
+      <div class="age-badge">
+        🎂 Today she turns <span id="ageDisplay">22</span> 🌟
+      </div>
+
+      <!-- Message box -->
+      <div class="message-box">
+        <p>
+          <span class="heart-emoji">💗</span> 
+          Every day with you is a gift, but today we celebrate 
+          <strong>YOU</strong> — the brightest star in my sky. 
+          <span class="heart-emoji">💗</span>
+        </p>
+        <p style="font-size:1rem; font-weight:300;">
+          “You are my sun, my moon, and all my stars.” 
+          <span style="display:inline-block; margin-left:6px;">🌙✨</span>
+        </p>
+        <div class="signature">— with all my love, Yours</div>
+      </div>
+
+      <!-- polaroid style memories - clickable for video -->
+      <div class="polaroid-row">
+        <div class="polaroid" data-video="https://www.w3schools.com/html/mov_bbb.mp4" data-title="A song for you">
+          <div class="photo">🌹</div>
+          <div class="caption">our first date</div>
+          <div class="play-icon">▶️</div>
+        </div>
+        <div class="polaroid" data-video="https://www.w3schools.com/html/mov_bbb.mp4" data-title="Sunsets with you">
+          <div class="photo">🌅</div>
+          <div class="caption">sunsets with you</div>
+          <div class="play-icon">▶️</div>
+        </div>
+        <div class="polaroid" data-video="https://www.w3schools.com/html/mov_bbb.mp4" data-title="Sweet moments">
+          <div class="photo">🍰</div>
+          <div class="caption">sweet moments</div>
+          <div class="play-icon">▶️</div>
+        </div>
+      </div>
+
+      <!-- Interactive button (surprise) -->
+      <button class="btn-love" id="surpriseBtn">
+        <span>💋</span> Send a kiss <span>💋</span>
+      </button>
+
+      <!-- extra love note -->
+      <div class="footer-note">
+        🌸 forever yours, today and always 🌸
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      // set age 
+      const ageDisplay = document.getElementById('ageDisplay');
+      if (ageDisplay) ageDisplay.textContent = '22'; 
+
+      // ----- VIDEO MODAL LOGIC -----
+      const overlay = document.getElementById('videoOverlay');
+      const videoPlayer = document.getElementById('videoPlayer');
+      const closeBtn = document.getElementById('closeVideoBtn');
+
+      function openVideo(src) {
+        videoPlayer.src = src;
+        overlay.classList.add('active');
+        videoPlayer.load();
+        videoPlayer.play().catch(() => {});
+      }
+
+      function closeVideo() {
+        overlay.classList.remove('active');
+        videoPlayer.pause();
+        videoPlayer.src = '';
+      }
+
+      closeBtn.addEventListener('click', closeVideo);
+      overlay.addEventListener('click', function(e) {
+        if (e.target === overlay) closeVideo();
+      });
+
+      // attach click to polaroids
+      document.querySelectorAll('.polaroid').forEach(el => {
+        el.addEventListener('click', function(e) {
+          const videoSrc = this.dataset.video;
+          if (videoSrc) {
+            openVideo(videoSrc);
+          }
+        });
+      });
+
+      // ----- KISS + BALLOON BURST -----
+      function createKissAndBalloons() {
+        // remove any existing burst container
+        const oldContainer = document.querySelector('.kiss-burst-container');
+        if (oldContainer) oldContainer.remove();
+
+        const container = document.createElement('div');
+        container.className = 'kiss-burst-container';
+        document.body.appendChild(container);
+
+        // big kiss
+        const kiss = document.createElement('div');
+        kiss.className = 'big-kiss';
+        kiss.textContent = '💋';
+        container.appendChild(kiss);
+
+        // balloon burst (multiple balloons)
+        const balloonEmojis = ['🎈', '🎈', '🎈', '🎈', '🎈', '🎈', '🎈', '🎈', '🎈', '🎈', '🎈', '🎈'];
+        const colors = ['#ff6b81', '#ff9ff3', '#feca57', '#48dbfb', '#ff9f43', '#a29bfe', '#fd79a8', '#00cec9'];
+        for (let i = 0; i < 18; i++) {
+          const balloon = document.createElement('div');
+          balloon.className = 'balloon';
+          balloon.textContent = balloonEmojis[i % balloonEmojis.length];
+          // random position around the screen
+          const left = 5 + Math.random() * 85;
+          const top = 10 + Math.random() * 75;
+          balloon.style.left = left + '%';
+          balloon.style.top = top + '%';
+          balloon.style.fontSize = (2.5 + Math.random() * 3) + 'rem';
+          balloon.style.animationDuration = (1.2 + Math.random() * 0.8) + 's';
+          balloon.style.animationDelay = (Math.random() * 0.4) + 's';
+          balloon.style.color = colors[Math.floor(Math.random() * colors.length)];
+          container.appendChild(balloon);
+        }
+
+        // auto remove after animation
+        setTimeout(() => {
+          if (container.parentNode) container.remove();
+        }, 2500);
+      }
+
+      // surprise button: kiss+balloons + sparkles + message
+      const surpriseBtn = document.getElementById('surpriseBtn');
+      if (surpriseBtn) {
+        surpriseBtn.addEventListener('click', function(e) {
+          // create kiss & balloon burst
+          createKissAndBalloons();
+
+          // sparkles around button
+          for (let i = 0; i < 14; i++) {
+            createSparkle(e.pageX, e.pageY);
+          }
+
+          // sweet message
+          const messages = [
+            '💖 I love you more than all the stars! 💖',
+            '🌸 You are my greatest happiness! 🌸',
+            '💋 Happy Birthday, my beautiful girl! 💋',
+            '✨ Today the world celebrates you! ✨',
+            '🌹 You are magic, inside and out! 🌹'
+          ];
+          const randomMsg = messages[Math.floor(Math.random() * messages.length)];
+          alert(randomMsg);
+        });
+      }
+
+      // sparkle helper
+      function createSparkle(x, y) {
+        const sparkle = document.createElement('div');
+        sparkle.className = 'sparkle';
+        sparkle.textContent = ['❤️','💖','🌸','✨','💕','💗','🌺'][Math.floor(Math.random() * 7)];
+        sparkle.style.left = (x + (Math.random() - 0.5) * 60) + 'px';
+        sparkle.style.top = (y + (Math.random() - 0.5) * 60) + 'px';
+        sparkle.style.fontSize = (1.2 + Math.random() * 1.2) + 'rem';
+        document.body.appendChild(sparkle);
+        setTimeout(() => sparkle.remove(), 700);
+      }
+
+      // click on card for small hearts
+      const card = document.querySelector('.birthday-card');
+      if (card) {
+        card.addEventListener('click', function(e) {
+          if (!e.target.closest('#surpriseBtn') && !e.target.closest('.polaroid')) {
+            for (let i = 0; i < 5; i++) {
+              createSparkle(e.clientX, e.clientY);
+            }
+          }
+        });
+      }
+
+      // extra floating hearts
+      (function addExtraHearts() {
+        const bg = document.querySelector('.hearts-bg');
+        if (bg) {
+          const emojis = ['❤️', '🌸', '💖', '✨', '🌺', '💕', '💗'];
+          for (let i = 0; i < 10; i++) {
+            const el = document.createElement('div');
+            el.className = 'heart-float';
+            el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+            el.style.left = (Math.random() * 95) + '%';
+            el.style.animationDuration = (10 + Math.random() * 18) + 's';
+            el.style.animationDelay = (Math.random() * 10) + 's';
+            el.style.fontSize = (1.6 + Math.random() * 2.4) + 'rem';
+            el.style.opacity = 0.1 + Math.random() * 0.25;
+            bg.appendChild(el);
+          }
+        }
+      })();
+
+      console.log('🌸 Happy Birthday, beautiful! 🌸');
+    })();
+  </script>
+</body>
+</html>
