@@ -27,7 +27,7 @@
       overflow-x: hidden;
     }
 
-    /* floating heart background (css only) */
+    /* floating heart background */
     .hearts-bg {
       position: fixed;
       top: 0;
@@ -64,7 +64,101 @@
       100% { transform: translateY(-160px) rotate(-5deg) scale(1); opacity: 0.15; }
     }
 
-    /* main card – glassmorphism + soft glow */
+    /* LOCK SCREEN (Quiz) */
+    .lock-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 2000;
+      background: rgba(40, 10, 20, 0.85);
+      backdrop-filter: blur(14px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+    }
+
+    .lock-box {
+      max-width: 480px;
+      width: 100%;
+      background: rgba(255, 245, 245, 0.15);
+      backdrop-filter: blur(8px);
+      border-radius: 60px;
+      padding: 2.8rem 2rem;
+      border: 1px solid rgba(255, 200, 200, 0.3);
+      box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+      text-align: center;
+    }
+
+    .lock-box h2 {
+      font-family: 'Great Vibes', cursive;
+      color: #ffc1cc;
+      font-size: 2.6rem;
+      margin-bottom: 0.5rem;
+      font-weight: 300;
+    }
+
+    .lock-box p {
+      color: #fadadd;
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+      opacity: 0.8;
+    }
+
+    .lock-box input {
+      width: 100%;
+      padding: 0.9rem 1.2rem;
+      border-radius: 60px;
+      border: 1px solid rgba(255, 200, 200, 0.3);
+      background: rgba(255, 240, 240, 0.1);
+      color: #fff;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      outline: none;
+      transition: 0.3s;
+      font-family: 'Quicksand', sans-serif;
+    }
+
+    .lock-box input::placeholder {
+      color: rgba(255, 200, 200, 0.5);
+    }
+
+    .lock-box input:focus {
+      border-color: #ff9aae;
+      box-shadow: 0 0 20px rgba(255, 120, 160, 0.2);
+    }
+
+    .lock-box .quiz-btn {
+      background: #ffa0b2;
+      border: none;
+      padding: 0.8rem 2.5rem;
+      border-radius: 60px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #2d141c;
+      cursor: pointer;
+      transition: 0.25s;
+      margin-top: 0.5rem;
+      width: 100%;
+      font-family: 'Quicksand', sans-serif;
+    }
+
+    .lock-box .quiz-btn:hover {
+      background: #ff8aa0;
+      transform: scale(1.02);
+      box-shadow: 0 10px 30px rgba(200, 70, 100, 0.4);
+    }
+
+    .lock-error {
+      color: #ff7b8a;
+      font-size: 0.9rem;
+      margin-top: 0.8rem;
+      min-height: 1.5rem;
+    }
+
+    /* main card */
     .birthday-card {
       position: relative;
       z-index: 10;
@@ -81,6 +175,11 @@
       text-align: center;
       transition: 0.3s;
       border: 1px solid rgba(255, 220, 220, 0.5);
+      display: none; /* hidden until quiz passed */
+    }
+
+    .birthday-card.active {
+      display: block;
     }
 
     .card-inner {
@@ -89,7 +188,6 @@
       align-items: center;
     }
 
-    /* profile / decorative avatar */
     .avatar {
       width: 130px;
       height: 130px;
@@ -111,7 +209,6 @@
       box-shadow: 0 20px 45px rgba(233, 100, 130, 0.5);
     }
 
-    /* name & title */
     .name {
       font-family: 'Great Vibes', cursive;
       font-size: 3.6rem;
@@ -177,7 +274,6 @@
       opacity: 0.9;
     }
 
-    /* countdown / age badge */
     .age-badge {
       background: #fcccd9;
       padding: 0.6rem 2rem;
@@ -202,7 +298,7 @@
       color: #b3415a;
     }
 
-    /* photo gallery / polaroid style - now clickable for video */
+    /* polaroid row */
     .polaroid-row {
       display: flex;
       flex-wrap: wrap;
@@ -224,12 +320,8 @@
       position: relative;
     }
 
-    .polaroid:nth-child(2) {
-      transform: rotate(3deg);
-    }
-    .polaroid:nth-child(3) {
-      transform: rotate(-2.5deg);
-    }
+    .polaroid:nth-child(2) { transform: rotate(3deg); }
+    .polaroid:nth-child(3) { transform: rotate(-2.5deg); }
 
     .polaroid:hover {
       transform: scale(1.02) rotate(0deg);
@@ -250,11 +342,11 @@
     }
 
     .polaroid .caption {
-      font-size: 0.8rem;
-      font-weight: 400;
+      font-size: 0.75rem;
+      font-weight: 500;
       color: #7a4b56;
       margin-top: 0.5rem;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.3px;
       text-align: center;
     }
 
@@ -269,7 +361,6 @@
       pointer-events: none;
     }
 
-    /* CTA button */
     .btn-love {
       background: #ffb3c1;
       border: none;
@@ -298,11 +389,8 @@
       color: #2d141c;
     }
 
-    .btn-love:active {
-      transform: scale(0.96);
-    }
+    .btn-love:active { transform: scale(0.96); }
 
-    /* small footer */
     .footer-note {
       margin-top: 1.5rem;
       font-size: 0.9rem;
@@ -312,14 +400,41 @@
       font-weight: 300;
     }
 
-    /* video modal overlay */
+    /* shayari section */
+    .shayari-box {
+      background: rgba(255, 230, 235, 0.4);
+      backdrop-filter: blur(4px);
+      border-radius: 40px;
+      padding: 1.5rem 1.8rem;
+      margin: 1.5rem 0 1rem 0;
+      border: 1px solid rgba(255, 200, 200, 0.3);
+      width: 100%;
+      text-align: center;
+      line-height: 2;
+      font-size: 1rem;
+      color: #4d2e38;
+    }
+
+    .shayari-box .shayari-line {
+      display: block;
+      font-weight: 400;
+    }
+
+    .shayari-box .heart-final {
+      font-size: 2rem;
+      margin-top: 0.5rem;
+      display: inline-block;
+      animation: pulseHeart 1.8s infinite;
+    }
+
+    /* video modal */
     .video-overlay {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.75);
+      background: rgba(0, 0, 0, 0.8);
       backdrop-filter: blur(6px);
       z-index: 1000;
       display: none;
@@ -328,9 +443,7 @@
       padding: 2rem;
     }
 
-    .video-overlay.active {
-      display: flex;
-    }
+    .video-overlay.active { display: flex; }
 
     .video-container {
       max-width: 700px;
@@ -370,12 +483,9 @@
       border: 2px solid white;
     }
 
-    .close-video:hover {
-      transform: scale(1.1);
-      background: #e85a6f;
-    }
+    .close-video:hover { transform: scale(1.1); background: #e85a6f; }
 
-    /* big kiss & balloon burst */
+    /* kiss & balloon burst */
     .kiss-burst-container {
       position: fixed;
       top: 0;
@@ -418,59 +528,6 @@
       100% { transform: scale(2.5) translate(30px, -220px); opacity: 0; }
     }
 
-    /* responsive */
-    @media (max-width: 550px) {
-      .birthday-card {
-        padding: 2rem 1.5rem;
-        border-radius: 40px;
-      }
-      .name {
-        font-size: 2.8rem;
-      }
-      .avatar {
-        width: 100px;
-        height: 100px;
-        font-size: 4rem;
-      }
-      .message-box p {
-        font-size: 1rem;
-      }
-      .polaroid-row {
-        gap: 0.8rem;
-      }
-      .polaroid {
-        flex: 0 1 90px;
-        padding-bottom: 1rem;
-      }
-      .polaroid .photo {
-        font-size: 2.2rem;
-      }
-      .btn-love {
-        font-size: 1.1rem;
-        padding: 0.7rem 2rem;
-      }
-      .age-badge {
-        font-size: 1rem;
-        padding: 0.4rem 1.2rem;
-      }
-      .big-kiss {
-        font-size: 6rem;
-      }
-    }
-
-    @media (max-width: 420px) {
-      .polaroid {
-        flex: 0 1 70px;
-      }
-      .polaroid .photo {
-        font-size: 1.6rem;
-      }
-      .polaroid .caption {
-        font-size: 0.6rem;
-      }
-    }
-
-    /* sparkle (for button) */
     .sparkle {
       position: fixed;
       pointer-events: none;
@@ -482,22 +539,49 @@
       0% { opacity: 1; transform: translate(0,0) scale(1); }
       100% { opacity: 0; transform: translate(30px, -60px) scale(1.6); }
     }
+
+    @media (max-width: 550px) {
+      .birthday-card { padding: 2rem 1.5rem; border-radius: 40px; }
+      .name { font-size: 2.8rem; }
+      .avatar { width: 100px; height: 100px; font-size: 4rem; }
+      .message-box p { font-size: 1rem; }
+      .polaroid-row { gap: 0.8rem; }
+      .polaroid { flex: 0 1 90px; padding-bottom: 1rem; }
+      .polaroid .photo { font-size: 2.2rem; }
+      .btn-love { font-size: 1.1rem; padding: 0.7rem 2rem; }
+      .age-badge { font-size: 1rem; padding: 0.4rem 1.2rem; }
+      .big-kiss { font-size: 6rem; }
+      .lock-box { padding: 2rem 1.2rem; }
+      .lock-box h2 { font-size: 2rem; }
+      .shayari-box { font-size: 0.9rem; padding: 1rem; }
+    }
+
+    @media (max-width: 420px) {
+      .polaroid { flex: 0 1 70px; }
+      .polaroid .photo { font-size: 1.6rem; }
+      .polaroid .caption { font-size: 0.6rem; }
+    }
   </style>
 </head>
 <body>
 
+  <!-- LOCK SCREEN (Quiz) -->
+  <div class="lock-screen" id="lockScreen">
+    <div class="lock-box">
+      <h2>💖 Unlock with Love 💖</h2>
+      <p>Answer these questions to enter the surprise</p>
+      <input type="text" id="q1" placeholder="1. Your first name (CAPITAL letters)" autocomplete="off">
+      <input type="text" id="q2" placeholder="2. The person who loves you a lot (CAPITAL letters)" autocomplete="off">
+      <button class="quiz-btn" id="unlockBtn">✨ Unlock ✨</button>
+      <div class="lock-error" id="lockError"></div>
+    </div>
+  </div>
+
   <!-- floating hearts background -->
   <div class="hearts-bg">
-    <div class="heart-float">❤️</div>
-    <div class="heart-float">🌸</div>
-    <div class="heart-float">💖</div>
-    <div class="heart-float">✨</div>
-    <div class="heart-float">🌸</div>
-    <div class="heart-float">💗</div>
-    <div class="heart-float">❤️</div>
-    <div class="heart-float">💕</div>
-    <div class="heart-float">🌸</div>
-    <div class="heart-float">💖</div>
+    <div class="heart-float">❤️</div><div class="heart-float">🌸</div><div class="heart-float">💖</div>
+    <div class="heart-float">✨</div><div class="heart-float">🌸</div><div class="heart-float">💗</div>
+    <div class="heart-float">❤️</div><div class="heart-float">💕</div><div class="heart-float">🌸</div><div class="heart-float">💖</div>
   </div>
 
   <!-- video modal -->
@@ -511,23 +595,20 @@
     </div>
   </div>
 
-  <!-- main birthday card -->
-  <div class="birthday-card">
+  <!-- MAIN CARD -->
+  <div class="birthday-card" id="mainCard">
     <div class="card-inner">
 
-      <!-- Avatar with crown emoji -->
       <div class="avatar">👸🏽</div>
 
-      <!-- Name -->
       <h1 class="name">Happy Birthday, My Queen</h1>
       <div class="sub-greeting">✨ to the most beautiful soul ✨</div>
 
-      <!-- Age badge -->
+      <!-- Updated: "Today You turns" -->
       <div class="age-badge">
-        🎂 Today she turns <span id="ageDisplay">22</span> 🌟
+        🎂 Today You turns <span id="ageDisplay">22</span> 🌟
       </div>
 
-      <!-- Message box -->
       <div class="message-box">
         <p>
           <span class="heart-emoji">💗</span> 
@@ -542,31 +623,46 @@
         <div class="signature">— with all my love, Yours</div>
       </div>
 
-      <!-- polaroid style memories - clickable for video -->
+      <!-- Polaroid row with updated labels & video mapping -->
       <div class="polaroid-row">
-        <div class="polaroid" data-video="https://www.w3schools.com/html/mov_bbb.mp4" data-title="A song for you">
+        <div class="polaroid" data-video="video1.mp4" data-title="1st Surprise">
           <div class="photo">🌹</div>
-          <div class="caption">our first date</div>
+          <div class="caption">1st Surprise</div>
           <div class="play-icon">▶️</div>
         </div>
-        <div class="polaroid" data-video="https://www.w3schools.com/html/mov_bbb.mp4" data-title="Sunsets with you">
+        <div class="polaroid" data-video="video2.mp4" data-title="2nd Surprise">
           <div class="photo">🌅</div>
-          <div class="caption">sunsets with you</div>
+          <div class="caption">2nd Surprise</div>
           <div class="play-icon">▶️</div>
         </div>
-        <div class="polaroid" data-video="https://www.w3schools.com/html/mov_bbb.mp4" data-title="Sweet moments">
+        <div class="polaroid" data-video="video3.mp4" data-title="3rd Surprise">
           <div class="photo">🍰</div>
-          <div class="caption">sweet moments</div>
+          <div class="caption">3rd Surprise</div>
           <div class="play-icon">▶️</div>
         </div>
       </div>
 
-      <!-- Interactive button (surprise) -->
+      <!-- Shayari Section -->
+      <div class="shayari-box">
+        <span class="shayari-line">🌙 चाँद भी फीका लगे, जब तुम्हारी मुस्कान याद आए।</span>
+        <span class="shayari-line">तेरे जन्मदिन पर बस इतनी सी दुआ है,</span>
+        <span class="shayari-line">तेरी हर मुस्कान हमेशा यूँ ही जवाँ रहे।</span>
+        <span class="shayari-line">मेरी ज़िंदगी में तू यूँ ही खास रहे,</span>
+        <span class="shayari-line">और तेरे हर जन्मदिन पर मेरी तरफ़ से तुझे ढेर सारा प्यार मिले। ❤️🎂</span>
+        <span class="shayari-line" style="margin-top:0.5rem;">—</span>
+        <span class="shayari-line">जन्मदिन पर तुझे क्या तोहफ़ा दूँ,</span>
+        <span class="shayari-line">तू खुद ही मेरे लिए सबसे खूबसूरत तोहफ़ा है।</span>
+        <span class="shayari-line">बस इतना कहूँगा—</span>
+        <span class="shayari-line">तेरी हर खुशी में मेरी खुशी शामिल रहे,</span>
+        <span class="shayari-line">और तेरा हर जन्मदिन मेरे साथ खास रहे।</span>
+        <div class="heart-final">💖 My Love Heart 💖</div>
+      </div>
+
+      <!-- CTA Button -->
       <button class="btn-love" id="surpriseBtn">
         <span>💋</span> Send a kiss <span>💋</span>
       </button>
 
-      <!-- extra love note -->
       <div class="footer-note">
         🌸 forever yours, today and always 🌸
       </div>
@@ -576,11 +672,42 @@
 
   <script>
     (function() {
-      // set age 
-      const ageDisplay = document.getElementById('ageDisplay');
-      if (ageDisplay) ageDisplay.textContent = '22'; 
+      // ----- LOCK SCREEN (QUIZ) -----
+      const lockScreen = document.getElementById('lockScreen');
+      const mainCard = document.getElementById('mainCard');
+      const unlockBtn = document.getElementById('unlockBtn');
+      const lockError = document.getElementById('lockError');
+      const q1 = document.getElementById('q1');
+      const q2 = document.getElementById('q2');
 
-      // ----- VIDEO MODAL LOGIC -----
+      // Correct answers (CAPITAL)
+      const CORRECT_Q1 = 'CHHAVI';
+      const CORRECT_Q2 = 'PRANJAL';
+
+      function tryUnlock() {
+        const ans1 = q1.value.trim().toUpperCase();
+        const ans2 = q2.value.trim().toUpperCase();
+
+        if (ans1 === CORRECT_Q1 && ans2 === CORRECT_Q2) {
+          lockScreen.style.display = 'none';
+          mainCard.classList.add('active');
+          // small celebration
+          for (let i = 0; i < 12; i++) {
+            createSparkle(window.innerWidth/2, window.innerHeight/2);
+          }
+        } else {
+          lockError.textContent = '❌ Wrong answer! Try again, my love. 💕';
+          q1.value = '';
+          q2.value = '';
+          q1.focus();
+        }
+      }
+
+      unlockBtn.addEventListener('click', tryUnlock);
+      q1.addEventListener('keydown', (e) => { if (e.key === 'Enter') q2.focus(); });
+      q2.addEventListener('keydown', (e) => { if (e.key === 'Enter') tryUnlock(); });
+
+      // ----- VIDEO MODAL -----
       const overlay = document.getElementById('videoOverlay');
       const videoPlayer = document.getElementById('videoPlayer');
       const closeBtn = document.getElementById('closeVideoBtn');
@@ -603,7 +730,7 @@
         if (e.target === overlay) closeVideo();
       });
 
-      // attach click to polaroids
+      // attach click to polaroids (video mapping)
       document.querySelectorAll('.polaroid').forEach(el => {
         el.addEventListener('click', function(e) {
           const videoSrc = this.dataset.video;
@@ -615,7 +742,6 @@
 
       // ----- KISS + BALLOON BURST -----
       function createKissAndBalloons() {
-        // remove any existing burst container
         const oldContainer = document.querySelector('.kiss-burst-container');
         if (oldContainer) oldContainer.remove();
 
@@ -623,20 +749,17 @@
         container.className = 'kiss-burst-container';
         document.body.appendChild(container);
 
-        // big kiss
         const kiss = document.createElement('div');
         kiss.className = 'big-kiss';
         kiss.textContent = '💋';
         container.appendChild(kiss);
 
-        // balloon burst (multiple balloons)
         const balloonEmojis = ['🎈', '🎈', '🎈', '🎈', '🎈', '🎈', '🎈', '🎈', '🎈', '🎈', '🎈', '🎈'];
         const colors = ['#ff6b81', '#ff9ff3', '#feca57', '#48dbfb', '#ff9f43', '#a29bfe', '#fd79a8', '#00cec9'];
         for (let i = 0; i < 18; i++) {
           const balloon = document.createElement('div');
           balloon.className = 'balloon';
           balloon.textContent = balloonEmojis[i % balloonEmojis.length];
-          // random position around the screen
           const left = 5 + Math.random() * 85;
           const top = 10 + Math.random() * 75;
           balloon.style.left = left + '%';
@@ -648,25 +771,19 @@
           container.appendChild(balloon);
         }
 
-        // auto remove after animation
         setTimeout(() => {
           if (container.parentNode) container.remove();
         }, 2500);
       }
 
-      // surprise button: kiss+balloons + sparkles + message
+      // surprise button
       const surpriseBtn = document.getElementById('surpriseBtn');
       if (surpriseBtn) {
         surpriseBtn.addEventListener('click', function(e) {
-          // create kiss & balloon burst
           createKissAndBalloons();
-
-          // sparkles around button
           for (let i = 0; i < 14; i++) {
             createSparkle(e.pageX, e.pageY);
           }
-
-          // sweet message
           const messages = [
             '💖 I love you more than all the stars! 💖',
             '🌸 You are my greatest happiness! 🌸',
@@ -722,7 +839,7 @@
         }
       })();
 
-      console.log('🌸 Happy Birthday, beautiful! 🌸');
+      console.log('🌸 Happy Birthday, Chhavi! 🌸');
     })();
   </script>
 </body>
