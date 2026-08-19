@@ -64,7 +64,7 @@
       100% { transform: translateY(-160px) rotate(-5deg) scale(1); opacity: 0.15; }
     }
 
-    /* LOCK SCREEN (Quiz) - now accepts any input */
+    /* LOCK SCREEN - now accepts any input */
     .lock-screen {
       position: fixed;
       top: 0;
@@ -404,6 +404,7 @@
       font-family: 'Quicksand', sans-serif;
       letter-spacing: 0.6px;
       backdrop-filter: blur(2px);
+      text-decoration: none;
     }
 
     .btn-love:hover {
@@ -788,12 +789,10 @@
         <div class="heart-final">💖 My Love Heart 💖</div>
       </div>
 
-      <!-- Updated button: Send a kiss for more surprises -->
-      <button class="btn-love" id="surpriseBtn">
-        <a href="letter.html">
-  <span>💋</span> Send a kiss for more surprises <span>💋</span>
-</a>
-      </button>
+      <!-- Updated button: Send a kiss for more surprises - now links to letter.html -->
+      <a href="letter.html" class="btn-love" id="surpriseLink">
+        <span>💋</span> Send a kiss for more surprises <span>💋</span>
+      </a>
 
       <div class="footer-note">
         🌸 forever yours, today and always 🌸
@@ -816,7 +815,6 @@
         if (ans.length > 0) {
           lockScreen.style.display = 'none';
           mainCard.classList.add('active');
-          // Trigger balloon welcome
           showBalloonWelcome();
         } else {
           lockError.textContent = '💕 Please write something, my love! 💕';
@@ -832,7 +830,6 @@
         container.className = 'balloon-welcome active';
         document.body.appendChild(container);
 
-        // Balloons
         const balloonEmojis = ['🎈', '🎈', '🎈', '🎈', '🎈', '🎈', '🎈', '🎈', '🎈', '🎈', '🎈', '🎈', '🎈', '🎈', '🎈'];
         const colors = ['#ff6b81', '#ff9ff3', '#feca57', '#48dbfb', '#ff9f43', '#a29bfe', '#fd79a8', '#00cec9', '#ff4757', '#2ed573'];
         for (let i = 0; i < 35; i++) {
@@ -848,7 +845,6 @@
           container.appendChild(balloon);
         }
 
-        // Welcome message
         const msg = document.createElement('div');
         msg.className = 'welcome-message';
         msg.innerHTML = `
@@ -857,7 +853,6 @@
         `;
         container.appendChild(msg);
 
-        // Close button
         const closeBtn = document.createElement('button');
         closeBtn.className = 'welcome-close-btn';
         closeBtn.textContent = '✨ Let\'s Celebrate ✨';
@@ -865,13 +860,11 @@
 
         closeBtn.addEventListener('click', function() {
           container.remove();
-          // Create some sparkles on close
           for (let i = 0; i < 20; i++) {
             createSparkle(window.innerWidth/2 + (Math.random()-0.5)*300, window.innerHeight/2 + (Math.random()-0.5)*200);
           }
         });
 
-        // Auto remove after 12 seconds if not clicked
         setTimeout(() => {
           if (document.body.contains(container)) {
             container.remove();
@@ -905,7 +898,6 @@
         if (e.target === overlay) closeVideo();
       });
 
-      // attach click to polaroids
       document.querySelectorAll('.polaroid').forEach(el => {
         el.addEventListener('click', function(e) {
           const videoSrc = this.dataset.video;
@@ -915,7 +907,7 @@
         });
       });
 
-      // ----- KISS + BALLOON BURST -----
+      // ----- KISS + BALLOON BURST (for the link click) -----
       function createKissAndBalloons() {
         const oldContainer = document.querySelector('.kiss-burst-container');
         if (oldContainer) oldContainer.remove();
@@ -951,22 +943,20 @@
         }, 2500);
       }
 
-      const surpriseBtn = document.getElementById('surpriseBtn');
-      if (surpriseBtn) {
-        surpriseBtn.addEventListener('click', function(e) {
+      // When the link is clicked, show "I Love You" and balloon burst
+      const surpriseLink = document.getElementById('surpriseLink');
+      if (surpriseLink) {
+        surpriseLink.addEventListener('click', function(e) {
+          // Show "I Love You" message
+          alert('💖 I Love You, Chhavi! 💖');
+          
+          // Create kiss and balloon burst
           createKissAndBalloons();
-          for (let i = 0; i < 14; i++) {
-            createSparkle(e.pageX, e.pageY);
+          
+          // Create sparkles
+          for (let i = 0; i < 20; i++) {
+            createSparkle(window.innerWidth/2 + (Math.random()-0.5)*400, window.innerHeight/2 + (Math.random()-0.5)*300);
           }
-          const messages = [
-            '💖 I love you more than all the stars! 💖',
-            '🌸 You are my greatest happiness! 🌸',
-            '💋 Happy Birthday, my beautiful girl! 💋',
-            '✨ Today the world celebrates you! ✨',
-            '🌹 You are magic, inside and out! 🌹'
-          ];
-          const randomMsg = messages[Math.floor(Math.random() * messages.length)];
-          alert(randomMsg);
         });
       }
 
@@ -984,7 +974,7 @@
       const card = document.querySelector('.birthday-card');
       if (card) {
         card.addEventListener('click', function(e) {
-          if (!e.target.closest('#surpriseBtn') && !e.target.closest('.polaroid')) {
+          if (!e.target.closest('#surpriseLink') && !e.target.closest('.polaroid')) {
             for (let i = 0; i < 5; i++) {
               createSparkle(e.clientX, e.clientY);
             }
