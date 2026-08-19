@@ -1,1 +1,333 @@
-hi
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💖 A Love Letter for You 💖</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Quicksand:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(145deg, #ffdde1 0%, #fad0d4 100%);
+            font-family: 'Quicksand', sans-serif;
+            padding: 2rem;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Floating hearts background */
+        .hearts-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .heart-float {
+            position: absolute;
+            font-size: 1.8rem;
+            opacity: 0.2;
+            animation: floatUp 12s infinite alternate ease-in-out;
+            color: #f28b8b;
+        }
+
+        .heart-float:nth-child(1) { left: 5%; animation-delay: 0s; font-size: 2.4rem; }
+        .heart-float:nth-child(2) { left: 15%; animation-delay: 2s; font-size: 1.8rem; opacity: 0.15; }
+        .heart-float:nth-child(3) { left: 25%; animation-delay: 4s; font-size: 3rem; }
+        .heart-float:nth-child(4) { left: 35%; animation-delay: 1s; font-size: 2rem; }
+        .heart-float:nth-child(5) { left: 45%; animation-delay: 3s; font-size: 2.6rem; opacity: 0.25; }
+        .heart-float:nth-child(6) { left: 55%; animation-delay: 5s; font-size: 2.2rem; }
+        .heart-float:nth-child(7) { left: 65%; animation-delay: 0.5s; font-size: 3.2rem; opacity: 0.15; }
+        .heart-float:nth-child(8) { left: 75%; animation-delay: 2.5s; font-size: 1.9rem; }
+        .heart-float:nth-child(9) { left: 85%; animation-delay: 4.5s; font-size: 2.8rem; opacity: 0.2; }
+        .heart-float:nth-child(10) { left: 92%; animation-delay: 1.8s; font-size: 2rem; }
+
+        @keyframes floatUp {
+            0% { transform: translateY(20px) rotate(0deg) scale(0.9); opacity: 0.15; }
+            50% { transform: translateY(-80px) rotate(15deg) scale(1.2); opacity: 0.4; }
+            100% { transform: translateY(-160px) rotate(-5deg) scale(1); opacity: 0.1; }
+        }
+
+        /* Letter Card */
+        .letter-card {
+            position: relative;
+            z-index: 10;
+            max-width: 650px;
+            width: 100%;
+            background: rgba(255, 245, 245, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 50px 50px 50px 50px;
+            box-shadow: 0 30px 60px rgba(190, 90, 110, 0.25), 
+                        0 10px 30px rgba(255, 180, 190, 0.3),
+                        inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+            padding: 3rem 2.8rem;
+            border: 1px solid rgba(255, 220, 220, 0.5);
+            animation: fadeIn 1.2s ease-out;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: scale(0.9) translateY(30px); }
+            100% { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        .letter-header {
+            text-align: center;
+            margin-bottom: 1.8rem;
+        }
+
+        .letter-header .envelope-icon {
+            font-size: 4rem;
+            display: block;
+            margin-bottom: 0.5rem;
+            animation: pulseHeart 2s infinite;
+        }
+
+        @keyframes pulseHeart {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+            100% { transform: scale(1); }
+        }
+
+        .letter-header h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3.2rem;
+            color: #a1516b;
+            text-shadow: 0 3px 10px rgba(235, 140, 160, 0.3);
+        }
+
+        .letter-header .sub-title {
+            font-size: 1rem;
+            color: #b15d79;
+            background: rgba(255, 220, 225, 0.4);
+            padding: 0.3rem 1.8rem;
+            border-radius: 60px;
+            display: inline-block;
+            margin-top: 0.3rem;
+            border: 1px solid rgba(255, 200, 200, 0.5);
+        }
+
+        .letter-body {
+            background: rgba(255, 240, 240, 0.3);
+            backdrop-filter: blur(4px);
+            padding: 2rem 2rem;
+            border-radius: 40px;
+            margin: 1.2rem 0;
+            border: 1px solid rgba(255, 230, 230, 0.6);
+            line-height: 2.2;
+            font-size: 1.05rem;
+            color: #4d2e38;
+        }
+
+        .letter-body .greeting {
+            font-family: 'Great Vibes', cursive;
+            font-size: 1.8rem;
+            color: #a1516b;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .letter-body p {
+            margin-bottom: 0.8rem;
+        }
+
+        .letter-body .highlight {
+            color: #b3415a;
+            font-weight: 600;
+        }
+
+        .letter-body .love-sign {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2rem;
+            color: #a1516b;
+            margin-top: 1rem;
+            display: block;
+            text-align: right;
+        }
+
+        .letter-footer {
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+
+        .btn-back {
+            background: #ffb3c1;
+            border: none;
+            padding: 0.8rem 2.5rem;
+            border-radius: 60px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #451f2b;
+            cursor: pointer;
+            transition: 0.25s;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            font-family: 'Quicksand', sans-serif;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 8px 25px rgba(200, 110, 130, 0.2);
+        }
+
+        .btn-back:hover {
+            background: #ffa0b2;
+            transform: scale(1.02);
+            box-shadow: 0 12px 30px rgba(200, 90, 120, 0.3);
+        }
+
+        .btn-back:active { transform: scale(0.96); }
+
+        .footer-note {
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+            opacity: 0.6;
+            color: #66424b;
+            letter-spacing: 0.5px;
+        }
+
+        /* Sparkle effect */
+        .sparkle {
+            position: fixed;
+            pointer-events: none;
+            font-size: 1.2rem;
+            animation: sparkleFade 0.7s ease-out forwards;
+            z-index: 999;
+        }
+
+        @keyframes sparkleFade {
+            0% { opacity: 1; transform: translate(0,0) scale(1); }
+            100% { opacity: 0; transform: translate(30px, -60px) scale(1.6); }
+        }
+
+        @media (max-width: 550px) {
+            .letter-card { padding: 2rem 1.5rem; border-radius: 35px; }
+            .letter-header h1 { font-size: 2.5rem; }
+            .letter-body { padding: 1.5rem; font-size: 0.95rem; }
+            .letter-body .greeting { font-size: 1.5rem; }
+            .letter-body .love-sign { font-size: 1.6rem; }
+            .btn-back { font-size: 1rem; padding: 0.7rem 2rem; }
+        }
+
+        @media (max-width: 420px) {
+            .letter-card { padding: 1.5rem 1rem; }
+            .letter-header h1 { font-size: 2rem; }
+            .letter-body { padding: 1rem; font-size: 0.85rem; line-height: 2; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Floating hearts background -->
+    <div class="hearts-bg">
+        <div class="heart-float">❤️</div>
+        <div class="heart-float">🌸</div>
+        <div class="heart-float">💖</div>
+        <div class="heart-float">✨</div>
+        <div class="heart-float">🌸</div>
+        <div class="heart-float">💗</div>
+        <div class="heart-float">❤️</div>
+        <div class="heart-float">💕</div>
+        <div class="heart-float">🌸</div>
+        <div class="heart-float">💖</div>
+    </div>
+
+    <!-- Letter Card -->
+    <div class="letter-card">
+        <div class="letter-header">
+            <span class="envelope-icon">💌</span>
+            <h1>A Letter for You</h1>
+            <span class="sub-title">✨ For the most beautiful soul ✨</span>
+        </div>
+
+        <div class="letter-body">
+            <span class="greeting">My Dearest Chhavi,</span>
+            
+            <p>
+                On this special day, I wanted to put into words what my heart feels every single moment. 
+                You are not just a part of my life — you <span class="highlight">are</span> my life.
+            </p>
+            
+            <p>
+                Your smile lights up my darkest days, your laughter is the most beautiful melody I've ever heard, 
+                and your love has given me a reason to be a better person every day.
+            </p>
+            
+            <p>
+                <span class="highlight">💖 I Love You, Chhavi — with all my heart, with all my soul, and with every breath I take. 💖</span>
+            </p>
+            
+            <p>
+                You are my sunshine, my moon, and all my stars. You are my greatest blessing, 
+                my most beautiful memory, and my forever home.
+            </p>
+            
+            <p>
+                Today, on your birthday, I want to promise you that I will always be there for you — 
+                in your happiness and your sorrows, in your laughter and your tears. 
+                I will always cherish you, respect you, and love you unconditionally.
+            </p>
+            
+            <p>
+                <span class="highlight">Happy Birthday, my love. You are the most precious gift I have ever received.</span>
+            </p>
+            
+            <span class="love-sign">Yours forever,<br>Pyaru 💋</span>
+        </div>
+
+        <div class="letter-footer">
+            <a href="index.html" class="btn-back">💕 Back to Birthday Surprises 💕</a>
+        </div>
+
+        <div class="footer-note">
+            🌸 Every day with you is a celebration 🌸
+        </div>
+    </div>
+
+    <script>
+        // Create sparkles on click anywhere
+        document.addEventListener('click', function(e) {
+            for (let i = 0; i < 6; i++) {
+                createSparkle(e.clientX, e.clientY);
+            }
+        });
+
+        function createSparkle(x, y) {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            sparkle.textContent = ['❤️','💖','🌸','✨','💕','💗','🌺'][Math.floor(Math.random() * 7)];
+            sparkle.style.left = (x + (Math.random() - 0.5) * 60) + 'px';
+            sparkle.style.top = (y + (Math.random() - 0.5) * 60) + 'px';
+            sparkle.style.fontSize = (1 + Math.random() * 1.2) + 'rem';
+            document.body.appendChild(sparkle);
+            setTimeout(() => sparkle.remove(), 700);
+        }
+
+        // Auto sparkles on load
+        setTimeout(() => {
+            for (let i = 0; i < 15; i++) {
+                setTimeout(() => {
+                    createSparkle(
+                        Math.random() * window.innerWidth,
+                        Math.random() * window.innerHeight
+                    );
+                }, i * 200);
+            }
+        }, 500);
+
+        console.log('💖 I Love You, Chhavi! 💖');
+    </script>
+</body>
+</html>
