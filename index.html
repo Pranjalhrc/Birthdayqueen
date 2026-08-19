@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>🌸 Happy Birthday, My Love 🌸</title>
-  <!-- Google Fonts for a romantic touch -->
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Quicksand:wght@300;400;600&display=swap" rel="stylesheet">
@@ -175,7 +175,7 @@
       text-align: center;
       transition: 0.3s;
       border: 1px solid rgba(255, 220, 220, 0.5);
-      display: none; /* hidden until quiz passed */
+      display: none;
     }
 
     .birthday-card.active {
@@ -298,7 +298,6 @@
       color: #b3415a;
     }
 
-    /* polaroid row */
     .polaroid-row {
       display: flex;
       flex-wrap: wrap;
@@ -400,7 +399,6 @@
       font-weight: 300;
     }
 
-    /* shayari section */
     .shayari-box {
       background: rgba(255, 230, 235, 0.4);
       backdrop-filter: blur(4px);
@@ -485,7 +483,6 @@
 
     .close-video:hover { transform: scale(1.1); background: #e85a6f; }
 
-    /* kiss & balloon burst */
     .kiss-burst-container {
       position: fixed;
       top: 0;
@@ -565,7 +562,7 @@
 </head>
 <body>
 
-  <!-- LOCK SCREEN (Quiz) -->
+  <!-- LOCK SCREEN -->
   <div class="lock-screen" id="lockScreen">
     <div class="lock-box">
       <h2>💖 Unlock with Love 💖</h2>
@@ -604,7 +601,6 @@
       <h1 class="name">Happy Birthday, My Queen</h1>
       <div class="sub-greeting">✨ to the most beautiful soul ✨</div>
 
-      <!-- Updated: "Today You turns" -->
       <div class="age-badge">
         🎂 Today You turns <span id="ageDisplay">22</span> 🌟
       </div>
@@ -623,7 +619,7 @@
         <div class="signature">— with all my love, Yours</div>
       </div>
 
-      <!-- Polaroid row with updated labels & video mapping -->
+      <!-- Polaroid row with GitHub Pages compatible paths -->
       <div class="polaroid-row">
         <div class="polaroid" data-video="video1.mp4" data-title="1st Surprise">
           <div class="photo">🌹</div>
@@ -658,7 +654,6 @@
         <div class="heart-final">💖 My Love Heart 💖</div>
       </div>
 
-      <!-- CTA Button -->
       <button class="btn-love" id="surpriseBtn">
         <span>💋</span> Send a kiss <span>💋</span>
       </button>
@@ -680,7 +675,6 @@
       const q1 = document.getElementById('q1');
       const q2 = document.getElementById('q2');
 
-      // Correct answers (CAPITAL)
       const CORRECT_Q1 = 'CHHAVI';
       const CORRECT_Q2 = 'PRANJAL';
 
@@ -691,7 +685,6 @@
         if (ans1 === CORRECT_Q1 && ans2 === CORRECT_Q2) {
           lockScreen.style.display = 'none';
           mainCard.classList.add('active');
-          // small celebration
           for (let i = 0; i < 12; i++) {
             createSparkle(window.innerWidth/2, window.innerHeight/2);
           }
@@ -713,16 +706,20 @@
       const closeBtn = document.getElementById('closeVideoBtn');
 
       function openVideo(src) {
-        videoPlayer.src = src;
+        // Try to load video with fallback
+        videoPlayer.innerHTML = `<source src="${src}" type="video/mp4">`;
         overlay.classList.add('active');
         videoPlayer.load();
-        videoPlayer.play().catch(() => {});
+        videoPlayer.play().catch(function(error) {
+          console.log('Video play error:', error);
+          alert('⚠️ Video couldn\'t play. Make sure video files are in the same folder as this HTML file.');
+        });
       }
 
       function closeVideo() {
         overlay.classList.remove('active');
         videoPlayer.pause();
-        videoPlayer.src = '';
+        videoPlayer.innerHTML = '';
       }
 
       closeBtn.addEventListener('click', closeVideo);
@@ -730,7 +727,7 @@
         if (e.target === overlay) closeVideo();
       });
 
-      // attach click to polaroids (video mapping)
+      // attach click to polaroids
       document.querySelectorAll('.polaroid').forEach(el => {
         el.addEventListener('click', function(e) {
           const videoSrc = this.dataset.video;
@@ -776,7 +773,6 @@
         }, 2500);
       }
 
-      // surprise button
       const surpriseBtn = document.getElementById('surpriseBtn');
       if (surpriseBtn) {
         surpriseBtn.addEventListener('click', function(e) {
@@ -796,7 +792,6 @@
         });
       }
 
-      // sparkle helper
       function createSparkle(x, y) {
         const sparkle = document.createElement('div');
         sparkle.className = 'sparkle';
@@ -808,7 +803,6 @@
         setTimeout(() => sparkle.remove(), 700);
       }
 
-      // click on card for small hearts
       const card = document.querySelector('.birthday-card');
       if (card) {
         card.addEventListener('click', function(e) {
@@ -820,7 +814,6 @@
         });
       }
 
-      // extra floating hearts
       (function addExtraHearts() {
         const bg = document.querySelector('.hearts-bg');
         if (bg) {
